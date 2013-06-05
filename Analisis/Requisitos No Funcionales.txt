@@ -1,0 +1,4 @@
+Interfaz Web
+Resolución Mínima 1024x768
+Framework de Persistencia Object Hashing Mapping
+Encriptación de Passwords
