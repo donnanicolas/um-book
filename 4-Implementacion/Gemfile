@@ -8,7 +8,7 @@ gem 'rails', '3.2.13'
 gem 'mysql2'
 gem 'devise'
 gem 'therubyracer'
-gem 'metro-ui-rails'
+gem 'metro-ui-rails', :git => 'git://github.com/jpmermoz/metro-ui-rails.git'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/jpmermoz/metro-ui-rails.git
+  revision: b83a1318b103f2f6ca56894840720ef77fc3406c
+  specs:
+    metro-ui-rails (0.15.8.14)
+      less-rails (~> 2.2.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -63,8 +70,6 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    metro-ui-rails (0.15.8.14)
-      less-rails (~> 2.2.3)
     mime-types (1.23)
     multi_json (1.7.7)
     mysql2 (0.3.11)
@@ -128,7 +133,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
-  metro-ui-rails
+  metro-ui-rails!
   mysql2
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)

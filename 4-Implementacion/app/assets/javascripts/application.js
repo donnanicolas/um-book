@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require metro-ui
 //= require_tree .
+
+$(document).ready(function() {
+	$('.notices .close').click(function(){
+		$(this).parents('.notices').remove();
+	});
+});
