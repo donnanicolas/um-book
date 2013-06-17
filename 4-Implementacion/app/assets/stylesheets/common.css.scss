@@ -1,0 +1,55 @@
+.page-region {
+  padding: 10px;
+}
+
+.input-control textarea {
+	height: 100px;
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+.notices {
+	width: 100%;
+
+	div[class*='bg-color-'] {
+		height: 40px !important;
+	}
+}
+
+.bg-color-alert {
+	background-color: #b91d47 !important;
+}
+
+.bg-color-notice {
+	background-color: #00a300 !important;
+}
+
+.pagination {
+  a:hover {
+    background: #000 !important;
+  }
+}
+
+a:hover {
+  background: inherit !important;
+}
+
+// Sticky footer
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -45px; 
+}
+
+.footer, .push {
+  height: 45px;
+}
