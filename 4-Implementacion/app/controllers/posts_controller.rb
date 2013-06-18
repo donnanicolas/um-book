@@ -43,6 +43,10 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
 
     if @post.save
+      flash[:notice] = "Publicacion creada!"
+      redirect_to request.referer
+    else
+      flash[:alert] = "Debe ingresar un contenido para publicar"
       redirect_to request.referer
     end
   end
