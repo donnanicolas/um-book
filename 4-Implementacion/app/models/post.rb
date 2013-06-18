@@ -4,5 +4,6 @@ class Post < ActiveRecord::Base
  
   belongs_to :user_sender, class_name: :User
   belongs_to :user_receiver, class_name: :User
-  
+
+  default_scope order('created_at DESC')
 end

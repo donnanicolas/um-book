@@ -1,0 +1,82 @@
+es:
+  app_name: 'Citysat SA'
+
+  attributes:
+    created_at: 'Creado'
+    updated_at: 'Actualizado'
+
+  activerecord:
+    models:
+      solicitude:
+        one: 'Solicitud'
+        other: 'Solicitudes'
+      
+      client:
+        one: 'Cliente'
+        other: 'Clientes'
+
+      seller:
+        one: 'Vendedor'
+        other: 'Vendedores'
+
+      technician:
+        one: 'Técnico'
+        other: 'Técnicos'
+
+      subagent:
+        one: 'Subagente'
+        other: 'Subagentes'
+
+      user:
+        one: 'Usuario'
+        other: 'Usuarios'
+
+    attributes:
+      solicitude:
+        number: "Número de SDS"
+        decoders: "Decodificadores"
+        has_net: "Incluye NET"
+        loaded_at: "Fecha de Carga"
+        notes: "Notas"
+        paying_at: "Fecha de Liquidación"
+        promotion_id: "Promoción"
+        seller_id: "Vendedor"
+        stand_id: "Stand"
+        status: "Estado"
+        client: "Cliente"
+
+      client:
+        number: "Número de cliente"
+        name: "Nombre"
+        address: "Dirección"
+        city: "Ciudad"
+        phone: "Teléfono"
+        province: "Provincia"
+        solicitude_id: "Solicitud"
+
+      jobcard:
+        activated_at: "Fecha de Activación"
+        number: "Número de Jobcard"
+        service_type: "Tipo de Sevicio"
+        solicitude_id: "Solicitud"
+        status: "Estado"
+        technician_id: "Técnico"
+
+      promotion:
+        name: "Nombre"
+
+      seller:
+        name: "Nombre"
+        subagent_id: "Subagente"
+
+      stand:
+        name: "Nombre"
+        subagent_id: "Subagente"
+
+      subagent:
+        code: "Código"
+        is_master: "Es principal"
+
+      technician:
+        name: "Nombre"
+        subagent_id: "Subagente"

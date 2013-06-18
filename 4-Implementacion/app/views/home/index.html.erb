@@ -1,1 +1,23 @@
-SOY EL HOME
+<%= form_for(@post) do |f| %>
+  <div class="input-control textarea">
+    <%= f.text_area :content, placeholder: "Qué estas pensando?" %>
+    <%= f.hidden_field :user_a_id, value: current_user.id %>
+    <%= f.hidden_field :user_b_id, value: current_user.id %>
+  </div>
+  
+  <%= f.submit class: "place-right" %>
+<% end %>
+
+<h1>Noticias</h1>
+<% @posts.each do |post| %>
+  <div class="span12">
+  <div class="tile triple bg-color-blueDark post">
+    <div class="tile-content">
+      <img src="https://github.com/Skookum/meme-gifs/diff_blob/b741b1160a46c0137f73fd7221ce406c20dcb3b3/non-gifs/dayum.jpg?raw=true" class="place-left">
+      <h3 style="margin-bottom: 5px;"><%= current_user.to_s %></h3>
+      <p><b><%= post.content %></b></p>
+      <%= I18n.l post.created_at %>
+    </div>
+  </div>  
+</div>
+<% end %>
