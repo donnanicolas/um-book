@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   has_many :friendships, foreign_key: :user_a_id, dependent: :destroy
   has_many :users, through: :friendships, source: :user_b
   has_many :reverse_friendships, class_name: :Friendship, foreign_key: :user_b_id, dependent: :destroy
+  
+  has_many :sent_posts, foreign_key: :user_a_id, class_name: :Post, dependent: :destroy
+  has_many :received_posts, foreign_key: :user_b_id, class_name: :Post, dependent: :destroy
+
 
   def friends
     friends_list = []
@@ -21,5 +25,9 @@ class User < ActiveRecord::Base
     end
 
     return friends_list
+  end
+
+  def to_s
+    self.first_name + " " + self.last_name
   end
 end
