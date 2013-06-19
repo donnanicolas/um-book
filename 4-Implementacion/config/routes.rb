@@ -1,4 +1,10 @@
 UmBook::Application.routes.draw do
+  resources :photos
+
+
+  resources :albums
+
+
   resources :posts
 
   devise_for :users

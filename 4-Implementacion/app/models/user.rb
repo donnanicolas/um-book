@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   
   has_many :sent_posts, foreign_key: :user_a_id, class_name: :Post, dependent: :destroy
   has_many :received_posts, foreign_key: :user_b_id, class_name: :Post, dependent: :destroy
-
+  has_many :albums
 
   def friends
     friends_list = []
