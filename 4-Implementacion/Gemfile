@@ -11,7 +11,7 @@ gem 'therubyracer'
 gem 'metro-ui-rails', :git => 'git://github.com/jpmermoz/metro-ui-rails.git'
 
 group :development do
-  gem 'railroady'
+  gem "rails-erd"
 end
 
 group :assets do
