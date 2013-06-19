@@ -37,7 +37,9 @@ class User < ActiveRecord::Base
     end
 
     sent_posts.each do |post|
-      posts << post
+      if post.is_home_post? || Friendship.are_users_friends?(post.user_receiver.id, post.user_sender.id)
+        posts << post
+      end
     end
 
     posts.sort_by { |p| p[:created_at] }.reverse
@@ -46,4 +48,5 @@ class User < ActiveRecord::Base
   def to_s
     self.first_name + " " + self.last_name
   end
+
 end

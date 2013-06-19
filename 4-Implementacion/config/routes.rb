@@ -1,10 +1,10 @@
 UmBook::Application.routes.draw do
+  
+  match 'users/send_friendship', to: 'users#send_friendship'
+  match 'users/accept_friendship', to: 'users#accept_friendship'
+  
   resources :photos
-
-
   resources :albums
-
-
   resources :posts
 
   devise_for :users

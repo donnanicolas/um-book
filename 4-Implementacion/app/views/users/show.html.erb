@@ -1,1 +1,21 @@
-SHOW
+<%= @user.to_s %>
+
+<% if @friendship %>
+  <% if @friendship.new_record? %>
+    <%= form_for(@friendship, url: users_send_friendship_path) do |f| %>
+      <%= f.hidden_field :user_b_id, value: @user.id %>
+      <%= f.submit "Enviar Solicitud de Amistad" %>
+    <% end %>
+  <% else %>
+    <% if !@friendship.are_friends? %>
+      <% if @friendship.user_a_id == current_user.id %>
+        SOLICITUD ENVIADA
+      <% else %>
+        <%= form_for(@friendship, url: users_accept_friendship_path) do |f| %>
+          <%= f.hidden_field :user_a_id, value: @user.id %>
+          <%= f.submit "Aceptar Solicitud de Amistad" %>
+        <% end %>
+      <%end%>
+    <% end %>
+  <% end %>
+<%end%>
