@@ -6,4 +6,8 @@ class Post < ActiveRecord::Base
   belongs_to :user_receiver, foreign_key: :user_b_id, class_name: :User
 
   default_scope order('created_at DESC')
+
+  def is_home_post?
+    user_a_id == user_b_id
+  end
 end

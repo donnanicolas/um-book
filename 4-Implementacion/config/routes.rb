@@ -1,9 +1,9 @@
 UmBook::Application.routes.draw do
   resources :posts
-  resources :users
 
   devise_for :users
-
+  resources :users, only: [:edit, :update, :index, :show]
+  
   root :to => "home#index"
   
   # The priority is based upon order of creation:

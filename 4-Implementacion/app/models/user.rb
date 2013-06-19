@@ -27,6 +27,22 @@ class User < ActiveRecord::Base
     return friends_list
   end
 
+  def home_posts
+    posts = []
+
+    friends.each do |friend|
+      friend.sent_posts.each do |post|
+        posts << post
+      end
+    end
+
+    sent_posts.each do |post|
+      posts << post
+    end
+
+    posts.sort_by { |p| p[:created_at] }.reverse
+  end
+
   def to_s
     self.first_name + " " + self.last_name
   end
