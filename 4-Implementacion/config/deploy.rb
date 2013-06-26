@@ -1,7 +1,7 @@
 require 'bundler/capistrano'
 
 set :application, "CodingWays"
-set :repository,  'https://github.com/donnanicolas/um-book.git'
+set :repository,  'https://github.com/donnanicolas/um-book.git 4-Implementacion'
 set :deploy_to, '/var/www/grupo2012.umbook.com.ar'
 set :scm, :git
 set :deploy_via, :remote_cache
