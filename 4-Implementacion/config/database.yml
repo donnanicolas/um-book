@@ -11,3 +11,12 @@ development:
   username: um-book
   password: um-book
   host: 127.0.0.1
+
+production:
+  adapter: mysql2
+  database: um-book_production
+  pool: 5
+  timeout: 5000
+  username: um-book
+  password: um-book
+  host: 127.0.0.1
