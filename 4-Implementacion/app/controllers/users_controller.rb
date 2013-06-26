@@ -24,6 +24,11 @@ class UsersController < ApplicationController
         @users << u
       end
     end
+
+    @post = Post.new
+    
+    @posts = Post.where(user_a_id: @user.id)
+
   end
 
   def solicitudes
