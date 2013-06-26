@@ -1,0 +1,20 @@
+<h1>Solicitudes de Amistad</h1>
+
+<% current_user.friendships_not_accepted.each do |s| %>
+  <div class="span12">
+    <div class="tile bg-color-yellow post">
+      <div class="tile-content">
+        <img src="https://github.com/Skookum/meme-gifs/diff_blob/b741b1160a46c0137f73fd7221ce406c20dcb3b3/non-gifs/dayum.jpg?raw=true" class="place-left">
+        <h3 style="margin-bottom: 5px;">
+          <%= link_to s.user_a.to_s, s.user_a %>
+        </h3>
+        <p>
+        <%= form_for(@friendship, url: users_accept_friendship_path) do |f| %>
+          <%= f.hidden_field :user_a_id, value: s.user_a.id %>
+          <%= f.submit "Aceptar Solicitud de Amistad" %>
+        <% end %>
+        </p>
+      </div>
+    </div>  
+  </div>
+<% end %>
