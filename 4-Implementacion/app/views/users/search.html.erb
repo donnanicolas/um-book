@@ -1,0 +1,14 @@
+<h1>Usuarios</h1>
+
+<% @users.each do |u| %>
+  <div class="span12">
+    <div class="tile bg-color-greenDark post">
+      <div class="tile-content">
+        <img src="https://github.com/Skookum/meme-gifs/diff_blob/b741b1160a46c0137f73fd7221ce406c20dcb3b3/non-gifs/dayum.jpg?raw=true" class="place-left">
+        <h3 style="margin-bottom: 5px;">
+          <%= link_to u.to_s, u %>
+        </h3>
+      </div>
+    </div>  
+  </div>
+<% end %>

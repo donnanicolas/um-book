@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>Registrarse</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -18,14 +18,12 @@
   <div class='input-control text'><%= f.label :last_name %><br />
     <%= f.text_field :last_name %></div>
 
-  <div class='input-control text'>
-    <%= f.label :born_at %><br />
-    <%= f.text_field :born_at %>
+  <%= f.label :born_at %><br />
+  <div class="input-control select">
+    <%= f.date_select :born_at, {:prompt => { :day => 'Seleccionar Día', :month => 'Seleccionar Mes', :year => 'Seleccionar Año' }, start_year: Date.today.year, end_year: 1900 }, {:class => 'date-select' }  %>
   </div>
-
   <div>
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Registrarse" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>

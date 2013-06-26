@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :born_at, :profile_picture_id
   validates_presence_of :first_name, :last_name, :born_at
@@ -45,8 +44,27 @@ class User < ActiveRecord::Base
     posts.sort_by { |p| p[:created_at] }.reverse
   end
 
+  def friendships_not_read
+    reverse_friendships.where(is_seen: false)
+  end
+
+  def friendships_not_accepted
+    reverse_friendships.where(are_friends: false)
+  end
+
+  def mark_solicitudes_as_read
+    reverse_friendships.where(is_seen: false).each do |s|
+      s.is_seen = true
+      s.save
+    end
+  end
+
   def to_s
     self.first_name + " " + self.last_name
   end
 
+  def self.search(query)
+    query = '%' + query + '%'
+    User.where("first_name LIKE (?) OR last_name LIKE (?)", query, query)    
+  end
 end
