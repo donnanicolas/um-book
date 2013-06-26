@@ -10,7 +10,10 @@ es:
       user:
         one: 'Usuario'
         other: 'Usuarios'
-      
+      album:
+        one: 'Album'
+        other: 'Albumes'
+
     attributes:
       user:
         first_name: "Nombre"
@@ -18,3 +21,5 @@ es:
         born_at: "Fecha de Nacimiento"
         password: "Clave"
         password_confirmation: "Confirmacion de Clave"
+      album:
+        name: 'Nombre'

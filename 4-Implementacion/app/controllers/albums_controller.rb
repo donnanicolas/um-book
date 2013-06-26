@@ -4,7 +4,7 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
+    @albums = Album.where(user_id: current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,7 +42,10 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
+    
+    
     @album = Album.new(params[:album])
+    @album.user_id = current_user.id
 
     respond_to do |format|
       if @album.save
