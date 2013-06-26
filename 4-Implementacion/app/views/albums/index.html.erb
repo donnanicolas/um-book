@@ -1,18 +1,10 @@
-<h1>Listing albums</h1>
+<h1>Albumes</h1>
+
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @albums.each do |album| %>
   <tr>
     <td><%= album.name %></td>
-    <td><%= album.user_id %></td>
     <td><%= link_to 'Show', album %></td>
     <td><%= link_to 'Edit', edit_album_path(album) %></td>
     <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>

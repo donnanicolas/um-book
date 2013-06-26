@@ -5,11 +5,13 @@
   <%= @album.name %>
 </p>
 
-<p>
-  <b>User:</b>
-  <%= @album.user_id %>
-</p>
-
+<% if @album.photos.count %>
+	<% @album.photos.each do |photo| %>
+		<img src="<% @album.id %>" alt="">
+	<% end %>
+<% else %>
+	<p>Este Album no tiene imagenes :(</p>
+<% end %>
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>
