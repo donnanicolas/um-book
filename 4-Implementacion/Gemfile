@@ -9,6 +9,7 @@ gem 'mysql2'
 gem 'devise'
 gem 'therubyracer'
 gem 'metro-ui-rails', :git => 'git://github.com/jpmermoz/metro-ui-rails.git'
+gem 'capistrano'
 
 group :development do
   gem "rails-erd"
