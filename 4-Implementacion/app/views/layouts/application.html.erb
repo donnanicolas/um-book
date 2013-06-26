@@ -48,6 +48,26 @@
             </span>
           </a>
 
+          <% if user_signed_in? %>
+            <span class="element search_field span8">
+              <form action="/users/search" method="get">
+                <div class="input-control text">
+                  <input name="query" type="text" placeholder="Buscar Usuarios...">
+                  <button class="btn-search"></button>
+                </div>
+              </form> 
+            </span>
+
+            <span class="element">
+              <a href='/users/solicitudes' style="color: #fff">
+                <i class="icon-user"></i>
+                <%= current_user.friendships_not_read.count %>
+              </a>
+            </span>
+          <% end %>
+
+          
+
           <ul class="menu place-right">
             <% if user_signed_in? %>
               <li><%= link_to "Inicio", root_url %></li>
