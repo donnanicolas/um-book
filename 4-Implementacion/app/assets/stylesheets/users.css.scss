@@ -1,3 +1,22 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#user-show-content {
+	#posts {
+		margin-top: 40px;
+	}
+
+	.post {
+	  height: inherit !important;
+
+	  img {
+	    width: 65px;
+	    height: 65px;
+	  }
+	}
+
+	.user-img img{
+		width: 65px;
+	    height: 65px;
+	}
+}

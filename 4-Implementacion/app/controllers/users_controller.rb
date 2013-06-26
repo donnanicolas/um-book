@@ -8,6 +8,10 @@ class UsersController < ApplicationController
       @friendship = Friendship.find_by_users(current_user.id, @user.id)
       @friendship = Friendship.new if @friendship.nil?
     end
+
+    @posts = Post.where(user_a_id: @user.id)
+
+    @post = Post.new
   end
 
   def search
@@ -24,6 +28,8 @@ class UsersController < ApplicationController
         @users << u
       end
     end
+
+    @users
   end
 
   def solicitudes
