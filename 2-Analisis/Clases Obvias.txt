@@ -23,14 +23,3 @@ SolicitudController: Encargado de manejar solicitudes
 DenunciaController: Encargado de manejar denuncias
 PublicacionController: Encargado de manejar publicaciones
 ComentarioController: Encargado de manejar comentarios
-
-Interfaces
-----------
-UsuarioFacade: Funcionalidad relativa a los usuarios
-AmistadFacade: Funcionalidad relativa a las amistades
-GrupoFacade: Funcionalidad relativa a los grupos
-GeneralFacade: Funcionalidad general de la aplicacion
-FotoFacade: Funcionalidad relativa a las fotos
-AlbumFacade: Funcionalidad relativa a los albums
-PublicacionFacade: Funcionalidad relativa a las publicaciones
-SeguridadFacade: Funcionalidad relativa a la seguridad y sesiones
