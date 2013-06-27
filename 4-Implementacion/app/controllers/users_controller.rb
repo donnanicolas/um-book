@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @users = []
     @query.split.each do |word|
       User.search(word).each do |u|
-        @users << u
+        @users << u if !@users.include?(u)
       end
     end
 

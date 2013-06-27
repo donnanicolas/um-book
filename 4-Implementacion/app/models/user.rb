@@ -51,12 +51,6 @@ class User < ActiveRecord::Base
       posts << post
     end
 
-    sent_posts.each do |post|
-      if post.is_home_post?
-        posts << post
-      end
-    end
-    
     posts.sort_by { |p| p[:created_at] }.reverse
   end
 

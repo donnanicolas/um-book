@@ -15,8 +15,8 @@
 	  }
 	}
 
-	.user-img img{
-		width: 65px;
-	    height: 65px;
-	}
+  .user-img img{
+    max-width: 100%;
+    max-height: 100%;
+  }
 }

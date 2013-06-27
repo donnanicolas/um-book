@@ -1,22 +1,39 @@
 <div class="grid" id="user-show-content">
   <div class="row">
-    <div class="span3">
-      <%= @user.to_s %>          
+    <div class="span2">
       <div class="user-img">
         <img src="https://github.com/Skookum/meme-gifs/diff_blob/b741b1160a46c0137f73fd7221ce406c20dcb3b3/non-gifs/dayum.jpg?raw=true" class="place-left">
       </div>
+      <div style="margin-bottom: 30px;">
+        <%= @user.to_s %> 
+      </div>
+
+      <% if (@friendship and @friendship.are_friends?) or current_user.id == @user.id%>
+        <h2>Amigos</h2>
+        <% @user.friends.each do |f| %>
+          <%= link_to f.to_s, f %> 
+        <% end %>
+
+        <br /><br />
+        <h2>Albums</h2>
+        <% @user.albums.each do |a| %>
+          <%= link_to a.name, a %>
+        <% end %>
+      <% end %>
+
     </div>
-    <div class="span9">
+    <div class="span8">
       <% if @friendship %>
         <% if @friendship.new_record? %>
           <%= form_for(@friendship, url: users_send_friendship_path) do |f| %>
+            <p>Usted y <%= @user.to_s %> no son amigos, enviele una solicitud de amistad en el siguiente botón:</p>
             <%= f.hidden_field :user_b_id, value: @user.id %>
             <%= f.submit "Enviar Solicitud de Amistad" %>
           <% end %>
         <% else %>
           <% if !@friendship.are_friends? %>
             <% if @friendship.user_a_id == current_user.id %>
-              SOLICITUD ENVIADA
+              SOLICITUD DE AMISTAD ENVIADA
             <% else %>
               <%= form_for(@friendship, url: users_accept_friendship_path) do |f| %>
                 <%= f.hidden_field :user_a_id, value: @user.id %>
@@ -26,7 +43,7 @@
           <% end %>
         <% end %>
       <%end%>
-      <% if (@friendship and @friendship.are_friends?) or current_user.id == @user.id%>
+      <% if (@friendship and @friendship.are_friends?) or current_user.id == @user.id %>
         <%= form_for(@post) do |f| %>
           <div class="input-control textarea">
             <%= f.text_area :content, placeholder: "Qué quieres decirle a tu Amigo?" %>
@@ -40,7 +57,7 @@
           <% end %>
         <% end %>
 
-        <% if @user.profile_posts.count %>
+        <% if !@user.profile_posts.empty? %>
           <div id="posts">
             <% @user.profile_posts.each do |post| %>
               <div>
@@ -62,6 +79,8 @@
           <p>Alegre su muro publicando algo.</p>
         <% end -%>
       <% end %>
+    </div>
+    <div class="span2">
     </div>
   </div>
 </div>
