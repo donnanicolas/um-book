@@ -9,8 +9,6 @@ class UsersController < ApplicationController
       @friendship = Friendship.new if @friendship.nil?
     end
 
-    @posts = Post.where(user_a_id: @user.id)
-
     @post = Post.new
   end
 

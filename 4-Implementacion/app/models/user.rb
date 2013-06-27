@@ -44,6 +44,22 @@ class User < ActiveRecord::Base
     posts.sort_by { |p| p[:created_at] }.reverse
   end
 
+  def profile_posts
+    posts = []
+
+    received_posts.each do |post|
+      posts << post
+    end
+
+    sent_posts.each do |post|
+      if post.is_home_post?
+        posts << post
+      end
+    end
+    
+    posts.sort_by { |p| p[:created_at] }.reverse
+  end
+
   def friendships_not_read
     reverse_friendships.where(is_seen: false)
   end

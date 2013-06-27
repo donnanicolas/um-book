@@ -1,74 +1,67 @@
- <div class="grid" id="user-show-content">
-        <div class="row">
-            <div class="span3">
-              <%= @user.to_s %>          
-              <div class="user-img">
-                <img src="https://github.com/Skookum/meme-gifs/diff_blob/b741b1160a46c0137f73fd7221ce406c20dcb3b3/non-gifs/dayum.jpg?raw=true" class="place-left">
-              </div>
-              <div>
-                <%= link_to "Albumes", albums_path %>
-              </div>
-            </div>
-            <div class="span9">
-              <% if @friendship %>
-                <% if @friendship.new_record? %>
-                  <%= form_for(@friendship, url: users_send_friendship_path) do |f| %>
-                    <%= f.hidden_field :user_b_id, value: @user.id %>
-                    <%= f.submit "Enviar Solicitud de Amistad" %>
-                  <% end %>
-                <% else %>
-                  <% if !@friendship.are_friends? %>
-                    <% if @friendship.user_a_id == current_user.id %>
-                      SOLICITUD ENVIADA
-                    <% else %>
-                      <%= form_for(@friendship, url: users_accept_friendship_path) do |f| %>
-                        <%= f.hidden_field :user_a_id, value: @user.id %>
-                        <%= f.submit "Aceptar Solicitud de Amistad" %>
-                      <% end %>
-                    <%end%>
-                  <% end %>
-                <% end %>
-              <%end%>
-               <% if (@friendship and @friendship.are_friends?) or current_user.id == @user.id%>
-                  <%= form_for(@post) do |f| %>
-                    <div class="input-control textarea">
-                      <%= f.text_area :content, placeholder: "Qué quieres decirle a tu Amigo?" %>
-                      <%= f.hidden_field :user_a_id, value: current_user.id %>
-                      <%= f.hidden_field :user_b_id, value: current_user.id %>
-                    </div>
-
-                    <%= button_tag(type: 'submit', class: "default place-right") do %>
-                      Publicar
-                      <i class="icon-pencil"></i>
-                     <% end %>
-                  <% end %>
-
-                  <% if @posts.count %>
-                    <div id="posts">
-                      <% @posts.each do |post| %>
-                        <div>
-                          <div class="tile bg-color-blueDark post">
-                            <div class="tile-content">
-                              <img src="https://github.com/Skookum/meme-gifs/diff_blob/b741b1160a46c0137f73fd7221ce406c20dcb3b3/non-gifs/dayum.jpg?raw=true" class="place-left">
-                              <h3 style="margin-bottom: 5px;">
-                                <%= link_to post.user_sender.to_s, post.user_sender %>
-                                <% if !post.is_home_post? %>    
-                                  >>
-                                  <%= link_to post.user_receiver.to_s, post.user_receiver %>
-                                <% end %>
-                              </h3>
-                              <p><b><%= post.content %></b></p>
-                              <%= I18n.l post.created_at %>
-                            </div>
-                          </div>  
-                        </div>
-                      <% end %>
-                    </div>
-                  <% else %>
-                    <p><% @user.first_name %> <% @user.last_name %> no tiene ninguna publicación :(</p>
-                    <p>Alegre su muro publicando algo.</p>
-                  <% end -%>
-              <% end %>
-            </div>
-        </div>
+<div class="grid" id="user-show-content">
+  <div class="row">
+    <div class="span3">
+      <%= @user.to_s %>          
+      <div class="user-img">
+        <img src="https://github.com/Skookum/meme-gifs/diff_blob/b741b1160a46c0137f73fd7221ce406c20dcb3b3/non-gifs/dayum.jpg?raw=true" class="place-left">
+      </div>
     </div>
+    <div class="span9">
+      <% if @friendship %>
+        <% if @friendship.new_record? %>
+          <%= form_for(@friendship, url: users_send_friendship_path) do |f| %>
+            <%= f.hidden_field :user_b_id, value: @user.id %>
+            <%= f.submit "Enviar Solicitud de Amistad" %>
+          <% end %>
+        <% else %>
+          <% if !@friendship.are_friends? %>
+            <% if @friendship.user_a_id == current_user.id %>
+              SOLICITUD ENVIADA
+            <% else %>
+              <%= form_for(@friendship, url: users_accept_friendship_path) do |f| %>
+                <%= f.hidden_field :user_a_id, value: @user.id %>
+                <%= f.submit "Aceptar Solicitud de Amistad" %>
+              <% end %>
+            <%end%>
+          <% end %>
+        <% end %>
+      <%end%>
+      <% if (@friendship and @friendship.are_friends?) or current_user.id == @user.id%>
+        <%= form_for(@post) do |f| %>
+          <div class="input-control textarea">
+            <%= f.text_area :content, placeholder: "Qué quieres decirle a tu Amigo?" %>
+            <%= f.hidden_field :user_a_id, value: current_user.id %>
+            <%= f.hidden_field :user_b_id, value: @user.id %>
+          </div>
+
+          <%= button_tag(type: 'submit', class: "default place-right") do %>
+            Publicar
+            <i class="icon-pencil"></i>
+          <% end %>
+        <% end %>
+
+        <% if @user.profile_posts.count %>
+          <div id="posts">
+            <% @user.profile_posts.each do |post| %>
+              <div>
+                <div class="tile bg-color-blueDark post">
+                  <div class="tile-content">
+                    <img src="https://github.com/Skookum/meme-gifs/diff_blob/b741b1160a46c0137f73fd7221ce406c20dcb3b3/non-gifs/dayum.jpg?raw=true" class="place-left">
+                    <h3 style="margin-bottom: 5px;">
+                      <%= link_to post.user_sender.to_s, post.user_sender %>
+                    </h3>
+                    <p><b><%= post.content %></b></p>
+                    <%= I18n.l post.created_at %>
+                  </div>
+                </div>  
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <p><% @user.first_name %> <% @user.last_name %> no tiene ninguna publicación :(</p>
+          <p>Alegre su muro publicando algo.</p>
+        <% end -%>
+      <% end %>
+    </div>
+  </div>
+</div>
