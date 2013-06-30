@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
 
-  before_filter only: :albums do |c|
+  before_filter only: [:albums] do |c|
     c.validate_friendship(User.find(params[:id])) 
   end
 
@@ -18,6 +18,11 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+
+    if @user.id != current_user.id
+      flash[:alert] = "No tiene permisos para continuar"
+      redirect_to root_url
+    end
   end
 
   def update
