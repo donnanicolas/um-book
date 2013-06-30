@@ -1,6 +1,7 @@
 <h1><%= @album.name %></h1>
 
 <div class="span12">
+  <h2>Cargar foto</h2>
   <%= form_for @photo, html: { multipart: true } do |f| %>
     <%= f.text_field :description, placeholder: "Descripcion" %><br />
     <%= f.hidden_field :album_id, value: @album.id %>

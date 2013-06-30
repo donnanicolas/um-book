@@ -5,7 +5,7 @@
         <%= link_to (image_tag @user.profile_photo, class: "place-left"), @user %>
       </div>
       <div style="margin-bottom: 30px;">
-        <%= link_to @user.to_s, @user %> 
+        <%= link_to @user.to_s, @user %><br />
         <%= link_to "Editar", edit_user_path(@user) if @user.id == current_user.id %>
       </div>
 
