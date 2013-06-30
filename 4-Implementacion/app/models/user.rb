@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   validates_attachment :profile_photo,
     :content_type => { :content_type => "image/jpeg" },
-    :size => { :in => 0..500.kilobytes }
+    :size => { :in => 0..3.megabytes }
   
   def friends
     friends_list = []

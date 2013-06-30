@@ -6,5 +6,5 @@ class Photo < ActiveRecord::Base
   
   validates_attachment :file, :presence => true,
     :content_type => { :content_type => "image/jpeg" },
-    :size => { :in => 0..1.megabytes }
+    :size => { :in => 0..3.megabytes }
 end
