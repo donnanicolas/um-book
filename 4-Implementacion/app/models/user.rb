@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :sent_posts, foreign_key: :user_a_id, class_name: :Post, dependent: :destroy
   has_many :received_posts, foreign_key: :user_b_id, class_name: :Post, dependent: :destroy
   has_many :albums
-  has_attached_file :profile_photo, :default_url => "default.png"
+  has_attached_file :profile_photo, styles: { thumb: "100x100>", medium: "800x800>" }, :default_url => "default.png"
 
   validates_attachment :profile_photo,
     :content_type => { :content_type => "image/jpeg" },

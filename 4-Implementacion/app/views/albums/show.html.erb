@@ -17,7 +17,7 @@
 <div class="span12" id="galleria">
   <% if !@album.photos.empty? %>
     <% @album.photos.each do |photo| %>
-      <%= image_tag photo.file.url, data: { description: photo.description } %>
+      <%= image_tag photo.file.url(:medium), data: { description: photo.description } %>
     <% end %>
   <% else %>
     <p>Este album no tiene imagenes :(</p>

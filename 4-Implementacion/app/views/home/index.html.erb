@@ -16,7 +16,7 @@
   <div class="span12">
   <div class="tile bg-color-blueDark post">
     <div class="tile-content">
-      <%= link_to (image_tag post.user_sender.profile_photo, class: "place-left"), post.user_sender %>
+      <%= link_to (image_tag post.user_sender.profile_photo.url(:thumb), class: "place-left"), post.user_sender %>
       <h3 style="margin-bottom: 5px;">
         <%= link_to post.user_sender.to_s, post.user_sender %>
         <% if !post.is_home_post? %>    
