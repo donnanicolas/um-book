@@ -4,7 +4,7 @@
   <div class="span12">
     <div class="tile bg-color-greenDark post">
       <div class="tile-content">
-        <img src="https://github.com/Skookum/meme-gifs/diff_blob/b741b1160a46c0137f73fd7221ce406c20dcb3b3/non-gifs/dayum.jpg?raw=true" class="place-left">
+        <%= link_to (image_tag u.profile_photo, class: "place-left"), u %>
         <h3 style="margin-bottom: 5px;">
           <%= link_to u.to_s, u %>
         </h3>

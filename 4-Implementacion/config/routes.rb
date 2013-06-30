@@ -4,6 +4,7 @@ UmBook::Application.routes.draw do
   match 'users/accept_friendship', to: 'users#accept_friendship'
   match 'users/search', to: 'users#search', via: :get
   match 'users/solicitudes', to: 'users#solicitudes', via: :get
+  match 'users/:id/albums', to: 'users#albums', via: :get
 
   resources :photos
   resources :albums
