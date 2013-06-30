@@ -13,7 +13,10 @@ class User < ActiveRecord::Base
   has_many :albums
   has_attached_file :profile_photo, :default_url => "default.png"
 
-
+  validates_attachment :profile_photo,
+    :content_type => { :content_type => "image/jpeg" },
+    :size => { :in => 0..500.kilobytes }
+  
   def friends
     friends_list = []
     

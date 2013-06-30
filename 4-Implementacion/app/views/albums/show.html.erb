@@ -6,6 +6,8 @@
     <%= form_for @photo, html: { multipart: true } do |f| %>
       <%= f.text_field :description, placeholder: "Descripcion" %><br />
       <%= f.hidden_field :album_id, value: @album.id %>
+
+      Maximo 1mb
       <%= f.file_field :file %><br />
       <%= f.submit 'Cargar' %>
     <% end %>

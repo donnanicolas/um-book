@@ -23,15 +23,12 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'Usuario modificado!' }
-      else
-        render text: "PRUEBA"
-        return
-        flash[:alert] = @user.errors.to_a
-        redirect_to @user
-      end
+    if @user.update_attributes(params[:user])
+      flash[:notice] = "Usuario modificado!"
+      redirect_to @user
+    else
+      flash[:alert] = "La imagen debe ser jpg y debe pesar menos de 500kb"
+      render "edit"
     end
   end
 
