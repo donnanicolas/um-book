@@ -12,6 +12,25 @@ class UsersController < ApplicationController
     @post = Post.new
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to @user, notice: 'Usuario modificado!' }
+      else
+        render text: "PRUEBA"
+        return
+        flash[:alert] = @user.errors.to_a
+        redirect_to @user
+      end
+    end
+  end
+
   def search
     @query = params[:query]
     

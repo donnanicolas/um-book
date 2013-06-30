@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :born_at, :profile_picture_id
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :born_at, :profile_photo
   validates_presence_of :first_name, :last_name, :born_at
 
   has_many :friendships, foreign_key: :user_a_id, dependent: :destroy
@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :sent_posts, foreign_key: :user_a_id, class_name: :Post, dependent: :destroy
   has_many :received_posts, foreign_key: :user_b_id, class_name: :Post, dependent: :destroy
   has_many :albums
+  has_attached_file :profile_photo, :default_url => "default.png"
+
 
   def friends
     friends_list = []
