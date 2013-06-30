@@ -1,10 +1,14 @@
 class AlbumsController < ApplicationController
   before_filter :authenticate_user!
+  
+  before_filter only: :show do |c|
+    c.validate_friendship(Album.find(params[:id]).user) 
+  end
 
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.where(user_id: current_user.id)
+    @albums = current_user.albums
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,6 +20,7 @@ class AlbumsController < ApplicationController
   # GET /albums/1.json
   def show
     @album = Album.find(params[:id])
+    @photo = Photo.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -42,14 +47,12 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    
-    
     @album = Album.new(params[:album])
     @album.user_id = current_user.id
 
     respond_to do |format|
       if @album.save
-        format.html { redirect_to @album, notice: 'Album was successfully created.' }
+        format.html { redirect_to @album, notice: 'Album creado!' }
         format.json { render json: @album, status: :created, location: @album }
       else
         format.html { render action: "new" }

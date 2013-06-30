@@ -11,13 +11,17 @@
       <% if (@friendship and @friendship.are_friends?) or current_user.id == @user.id%>
         <h2>Amigos</h2>
         <% @user.friends.each do |f| %>
-          <%= link_to f.to_s, f %> 
+          <div>
+            <%= link_to f.to_s, f %> 
+          </div>
         <% end %>
 
         <br /><br />
-        <h2>Albums</h2>
+        <%= link_to "<h2>Albums</h2>".html_safe, albums_path %>
         <% @user.albums.each do |a| %>
-          <%= link_to a.name, a %>
+          <div>
+            <%= link_to a.name, a %>
+          </div>
         <% end %>
       <% end %>
 
