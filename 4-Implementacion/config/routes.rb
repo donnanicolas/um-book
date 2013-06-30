@@ -11,7 +11,9 @@ UmBook::Application.routes.draw do
   resources :posts
 
   devise_for :users
-  resources :users, only: [:edit, :update, :index, :show]
+  resources :users, only: [:edit, :update, :index, :show] do
+    resources :albums
+  end
   
   root :to => "home#index"
   

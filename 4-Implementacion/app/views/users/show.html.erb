@@ -18,7 +18,7 @@
         <% end %>
 
         <br /><br />
-        <%= link_to "<h2>Albums</h2>".html_safe, albums_path %>
+        <%= link_to "<h2>Albums</h2>".html_safe, user_albums_path(@user.id) %>
         <% @user.albums.each do |a| %>
           <div>
             <%= link_to a.name, a %>
