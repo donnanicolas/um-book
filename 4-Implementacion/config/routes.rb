@@ -6,13 +6,14 @@ UmBook::Application.routes.draw do
   match 'users/solicitudes', to: 'users#solicitudes', via: :get
   match 'users/:id/albums', to: 'users#albums', via: :get
 
-  resources :photos
-  resources :albums
-  resources :posts
+  resources :photos, only: [:show, :destroy, :create]
+  resources :albums, only: [:show, :destroy, :new, :index, :create]
+  resources :posts, only: [:new, :create]
 
   devise_for :users
+  
   resources :users, only: [:edit, :update, :index, :show] do
-    resources :albums
+    resources :albums, only: [:show, :destroy, :new, :index, :create]
   end
   
   root :to => "home#index"
