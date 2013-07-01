@@ -1,6 +1,10 @@
 class PhotosController < ApplicationController
   before_filter :authenticate_user!
-  
+ 
+  before_filter only: :show do |c|
+    c.validate_friendship(Photo.find(params[:id]).album.user) 
+  end
+ 
   # GET /photos
   # GET /photos.json
   def index
@@ -76,7 +80,7 @@ class PhotosController < ApplicationController
     @photo.destroy
 
     respond_to do |format|
-      format.html { redirect_to photos_url }
+      format.html { redirect_to album_path(@photo.album) }
       format.json { head :no_content }
     end
   end
